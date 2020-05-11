@@ -3,19 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
->
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
-<h:body>
-    <h2>Teams:</h2>
-   <!-- <ol>
-        <ui:repeat value="#{teams.allManufacturers}" var="manufacturer">
-            <li><h:link value="#{manufacturer.name}" outcome="carParts?teamId=#{manufacturer.id}" /></li>
-        </ui:repeat>
-    </ol>
+<body>
+    <h1>Add a Manufacturer:</h1>
     <h:form>
-        <h:inputText value="#{teams.manufacturerToCreate.name}" required="true" />
-        <h:commandButton value="Add new manufacturer" action="#{teams.createTeam}" />
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <h:inputText id="name" value="#{manufacturers.manufacturerToCreate.name}"
+                                 required="true"/>
+                    <h:message for="name" style="color: #ff0000"/>
+                </td>
+            </tr>
+
+        </table>
+        <p>
+            <h:commandButton value="Add" action="#{manufacturers.addManufacturer}"/>
+        </p>
     </h:form>
-    <h:link outcome="myBatis/teams" value="MyBatis implementation"/>-->
-</h:body>
+    <h1>Manufacturers:</h1>
+    <h:dataTable value="#{manufacturers.manufacturers}" var="manufacturer">
+        <h:column>
+            <f:facet name="header"><b>Name</b></f:facet>
+            <h:link value="#{manufacturer.name}" outcome="Models?manufacturerId=#{manufacturer.id}"/>
+        </h:column>
+    </h:dataTable>
+</body>
 </html>

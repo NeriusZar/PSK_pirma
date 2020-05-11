@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:body>
+    <h1>#{models.manufacturer.name}</h1>
+    <h4>Add new model:</h4>
+    <h:form>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <h:inputText id="Name" value="#{models.model.name}"
+                                 required="true"/>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <h:commandButton value="Add" action="#{models.createModel}">
+                <f:param name="manufacturerId" value="#{models.manufacturer.id}" />
+            </h:commandButton>
+        </p>
+    </h:form>
+    <h2>Models:</h2>
+    <h:dataTable value="#{models.modelsList}" var="model">
+        <h:column>
+            <f:facet name="header"><b>Model name</b></f:facet>
+            <h:link value="#{model.name}" outcome="CarParts?modelId=#{model.id}"/>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
