@@ -4,8 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="cars.mybatis.model.Team" alias="Team"/>
-        <typeAlias type="cars.mybatis.model.Player" alias="Player"/>
+        <typeAlias type="cars.mybatis.model.CarPart" alias="CarPart"/>
+        <typeAlias type="cars.mybatis.model.Model" alias="Model"/>
+        <typeAlias type="cars.mybatis.model.Manufacturer" alias="Manufacturer"/>
+        <typeAlias type="cars.mybatis.model.ModelCarPart" alias="ModelCarPart"/>
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -16,7 +18,9 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="mybatis.xml/TeamMapper.xml"/>
-        <mapper resource="mybatis.xml/PlayerMapper.xml"/>
+        <mapper resource="mybatis.xml/CarPartMapper.xml"/>
+        <mapper resource="mybatis.xml/ModelMapper.xml"/>
+        <mapper resource="mybatis.xml/ManufacturerMapper.xml"/>
+        <mapper resource="mybatis.xml/ModelCarPartMapper.xml"/>
     </mappers>
 </configuration>
