@@ -13,9 +13,6 @@ public class CarPartDAO {
     @Inject
     private EntityManager em;
 
-
-
-
     public void persist(CarPart carPart){
         this.em.persist(carPart);
     }

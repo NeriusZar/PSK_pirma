@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h1>#{carPartsMyBatis.model.name} parts</h1>
+    <h2>Add Car part:</h2>
+    <h:form>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <h:inputText id="name" value="#{carPartsMyBatis.carPartToCreate.name}"
+                                 required="true"/>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <h:commandButton value="Add" action="#{carPartsMyBatis.createCarPart}">
+                <f:param name="modelId" value="#{carPartsMyBatis.model.id}" />
+            </h:commandButton>
+
+        </p>
+    </h:form>
+
+    <h2>All registered parts:</h2>
+
+    <h:form>
+        <ol>
+            <ui:repeat value="#{carPartsMyBatis.allCarParts}" var="carPart">
+                <li>#{carPart.name}</li>
+                <h:commandButton value="Add" action="#{carPartsMyBatis.addCarPart}">
+                    <f:param name="modelId" value="#{carPartsMyBatis.model.id}" />
+                    <f:param name="carPartId" value="#{carPart.id}" />
+                </h:commandButton>
+            </ui:repeat>
+        </ol>
+    </h:form>
+    <h2>Car parts added to this model:</h2>
+    <ol>
+        <ui:repeat value="#{carPartsMyBatis.selectedCarParts}" var="carPart">
+            <li>#{carPart.name}</li>
+        </ui:repeat>
+    </ol>
+</h:body>
+</html>

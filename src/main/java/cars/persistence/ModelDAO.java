@@ -25,4 +25,8 @@ public class ModelDAO {
     public void persist(Model model) {
         this.em.persist(model);
     }
+
+    public Model findOne(Integer id) {
+        return em.find(Model.class, id);
+    }
 }
