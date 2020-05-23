@@ -33,7 +33,7 @@
     <h:form>
         <ol>
             <ui:repeat value="#{carPartsMyBatis.allCarParts}" var="carPart">
-                <li>#{carPart.name}</li>
+                <li>#{carPart.name} #{carPart.id}</li>
                 <h:commandButton value="Add" action="#{carPartsMyBatis.addCarPart}">
                     <f:param name="modelId" value="#{carPartsMyBatis.model.id}" />
                     <f:param name="carPartId" value="#{carPart.id}" />
@@ -42,10 +42,16 @@
         </ol>
     </h:form>
     <h2>Car parts added to this model:</h2>
-    <ol>
-        <ui:repeat value="#{carPartsMyBatis.selectedCarParts}" var="carPart">
-            <li>#{carPart.name}</li>
-        </ui:repeat>
-    </ol>
+    <h:form>
+        <ol>
+            <ui:repeat value="#{carPartsMyBatis.selectedCarParts}" var="carPart">
+                <li>#{carPart.name} #{carPart.id}</li>
+                <h:commandButton value="Remove" action="#{carPartsMyBatis.removeCarPart}">
+                    <f:param name="modelId" value="#{carPartsMyBatis.model.id}" />
+                    <f:param name="carPartId" value="#{carPart.id}" />
+                </h:commandButton>
+            </ui:repeat>
+        </ol>
+    </h:form>
 </h:body>
 </html>

@@ -22,4 +22,6 @@ public interface ModelCarPartMapper {
      * @mbg.generated Tue May 12 00:09:55 EEST 2020
      */
     List<ModelCarPart> selectAll();
+
+    int deleteCarPartFromModel(ModelCarPart record);
 }

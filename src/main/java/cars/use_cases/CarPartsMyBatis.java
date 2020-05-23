@@ -83,6 +83,16 @@ public class CarPartsMyBatis{
     }
 
     @Transactional
+    public String deleteCarPart() {
+        Map<String, String> requestParameters =
+                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        Integer carPartId = Integer.parseInt(requestParameters.get("carPartId"));
+        carPartMapper.deleteByPrimaryKey(carPartId);
+
+        return "CarParts?faces-redirect=true&modelId=" + this.model.getId();
+    }
+
+    @Transactional
     public String addCarPart() {
 
         Map<String, String> requestParameters =
@@ -90,8 +100,22 @@ public class CarPartsMyBatis{
         Integer carPartId = Integer.parseInt(requestParameters.get("carPartId"));
 
         modelCarpart.setModelsId(this.model.getId());
-        modelCarpart.setCarpartsId(carPartId);
+        modelCarpart.setCarPartsId(carPartId);
         modelCarpartMapper.insert(modelCarpart);
+        return "CarParts?faces-redirect=true&modelId=" + this.model.getId();
+    }
+
+    @Transactional
+    public String removeCarPart() {
+
+        Map<String, String> requestParameters =
+                FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+        Integer carPartId = Integer.parseInt(requestParameters.get("carPartId"));
+
+        System.out.println(carPartId);
+        modelCarpart.setModelsId(this.model.getId());
+        modelCarpart.setCarPartsId(carPartId);
+        modelCarpartMapper.deleteCarPartFromModel(modelCarpart);
         return "CarParts?faces-redirect=true&modelId=" + this.model.getId();
     }
 

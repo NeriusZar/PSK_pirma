@@ -8,7 +8,7 @@
       This element was generated on Tue May 12 00:09:55 EEST 2020.
     -->
     <result column="MODELS_ID" jdbcType="INTEGER" property="modelsId" />
-    <result column="CARPARTS_ID" jdbcType="INTEGER" property="carpartsId" />
+    <result column="CARPARTS_ID" jdbcType="INTEGER" property="carPartsId" />
   </resultMap>
   <insert id="insert" parameterType="cars.mybatis.model.ModelCarPart">
     <!--
@@ -17,7 +17,7 @@
       This element was generated on Tue May 12 00:09:55 EEST 2020.
     -->
     insert into PUBLIC.MODEL_CARPART (MODELS_ID, CARPARTS_ID)
-    values (#{modelsId,jdbcType=INTEGER}, #{carpartsId,jdbcType=INTEGER})
+    values (#{modelsId,jdbcType=INTEGER}, #{carPartsId,jdbcType=INTEGER})
   </insert>
   <select id="selectAll" resultMap="BaseResultMap">
     <!--
@@ -28,4 +28,8 @@
     select MODELS_ID, CARPARTS_ID
     from PUBLIC.MODEL_CARPART
   </select>
+
+  <delete id="deleteCarPartFromModel" parameterType="cars.mybatis.model.ModelCarPart">
+    delete from PUBLIC.MODEL_CARPART WHERE MODELS_ID = #{modelsId,jdbcType=INTEGER} AND CARPARTS_ID = #{carPartsId,jdbcType=INTEGER};
+  </delete>
 </mapper>
