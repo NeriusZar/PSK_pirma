@@ -2,6 +2,7 @@ package cars.rest;
 
 import cars.entities.Manufacturer;
 import cars.entities.Model;
+import cars.interceptors.LoggedInvocation;
 import cars.persistence.ManufacturerDAO;
 import cars.persistence.ModelDAO;
 import cars.rest.contracts.ModelDto;
@@ -31,6 +32,7 @@ public class ModelController {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @LoggedInvocation
     public Response getById(@PathParam("id") final Integer id) {
         System.out.println("Modelio id yra - "+id.toString());
         Model model = modelsDAO.findOne(id);
@@ -48,6 +50,7 @@ public class ModelController {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
+    @LoggedInvocation
     public Response update(@PathParam("id") final Integer id, ModelDto modelDto) {
         try {
             Model model = modelsDAO.findOne(id);
@@ -67,6 +70,7 @@ public class ModelController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
+    @LoggedInvocation
     public Response create(ModelDto modelDto) {
         try {
             Model model = new Model();
