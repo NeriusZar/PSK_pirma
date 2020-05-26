@@ -34,6 +34,10 @@ public class Model {
     @JoinColumn(name = "MANUFACTURER_ID")
     private Manufacturer manufacturer;
 
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

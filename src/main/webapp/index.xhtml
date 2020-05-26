@@ -6,6 +6,7 @@
       xmlns:f="http://java.sun.com/jsf/core">
 <h:head/>
 <body>
+    <h1>#{welcome.welcome()}</h1>
     <h1>Add a Manufacturer:</h1>
     <h:form>
         <table>
@@ -30,5 +31,10 @@
             <h:link value="#{manufacturer.name}" outcome="Models?manufacturerId=#{manufacturer.id}"/>
         </h:column>
     </h:dataTable>
+    <h1>Car accidents in the world</h1>
+    <h:form>
+        <h:commandButton value="Scan car accidents in the world" disabled="#{scanCarAccidentsCount.scanning}" action="#{scanCarAccidentsCount.scan()}"/>
+        <h:outputText value="#{scanCarAccidentsCount.scanningStatus}"/>
+    </h:form>
 </body>
 </html>

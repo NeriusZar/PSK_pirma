@@ -1,5 +1,6 @@
 package cars.use_cases;
 
+import cars.decorators.HomePage;
 import cars.entities.Manufacturer;
 import cars.entities.Model;
 import cars.persistence.ManufacturerDAO;
@@ -37,6 +38,7 @@ public class Models {
     private List<Model> modelsList;
 
 
+
     @PostConstruct
     public void init(){
         Map<String, String> requestParameters =
@@ -56,4 +58,8 @@ public class Models {
         modelDAO.persist(model);
         return "Models?faces-redirect=true&manufacturerId=" + this.manufacturer.getId();
     }
+
+
+
+
 }

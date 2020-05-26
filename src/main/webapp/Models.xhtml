@@ -25,11 +25,13 @@
         </p>
     </h:form>
     <h2>Models:</h2>
-    <h:dataTable value="#{models.modelsList}" var="model">
-        <h:column>
-            <f:facet name="header"><b>Model name</b></f:facet>
-            <h:link value="#{model.name}" outcome="CarParts?modelId=#{model.id}"/>
-        </h:column>
-    </h:dataTable>
+    <ol>
+        <ui:repeat value="#{models.modelsList}" var="model">
+            <li>
+                <h:link value="#{model.name}" outcome="CarParts?modelId=#{model.id}"/>
+            </li>
+            <h:link value=" Edit" outcome="modelDetails?modelId=#{model.id}" />
+        </ui:repeat>
+    </ol>
 </h:body>
 </html>

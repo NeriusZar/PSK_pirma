@@ -29,7 +29,7 @@ public class Manufacturer {
     private String name;
 
     @OneToMany(mappedBy = "manufacturer")
-    private List<Model> carParts = new ArrayList<>();
+    private List<Model> models = new ArrayList<>();
 
 
     @Override

@@ -1,6 +1,7 @@
 package cars.persistence;
 
 
+import cars.entities.CarPart;
 import cars.entities.Model;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -28,5 +29,9 @@ public class ModelDAO {
 
     public Model findOne(Integer id) {
         return em.find(Model.class, id);
+    }
+
+    public Model update(Model model){
+        return em.merge(model);
     }
 }
